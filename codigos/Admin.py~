@@ -69,7 +69,7 @@ class Administrador (object):
 		#para imprimir quando for digitado print 'obj' 
 		for matricula in self.db_emails: 
 			email = (pickle.loads(self.db_emails[matricula]))
-			print 'Email: %s' %email[0]
+			print email[0]
 
 	
 	

@@ -79,7 +79,7 @@ def main ():
 				print 'Falha.Matricula não cadastrada'
 	
 		elif opcao == 4:
-			print adm
+			adm.retorna_email()
 
 		elif opcao == 5:
 			print 'Por favor aguarde enquanto a conexão é estabelecida'
