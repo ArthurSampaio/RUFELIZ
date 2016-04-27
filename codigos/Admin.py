@@ -5,6 +5,7 @@
 import anydbm #importa o modulo de banco de dados (proprio do python)
 import pickle 
 import getpass
+import string
 
 
 class Administrador (object):
@@ -60,8 +61,8 @@ class Administrador (object):
 		veg, carn = 0,0
 		for usuarios in self.db_emails: 
 			dado = pickle.loads(self.db_emails[usuarios])
-			if dado[1] == 'vegetariano': veg += 1
-			else: carn += 1
+			if 'veg' in dado[1].lower() : veg += 1
+			if 'carn' in dado[1].lower(): carn += 1
 		return veg, carn
 
 	def __str__(self): 
@@ -70,7 +71,7 @@ class Administrador (object):
 		print '________________________________________________________________'
 		for matricula in self.db_emails: 
 			email = (pickle.loads(self.db_emails[matricula]))
-			a +=  '%s\t%s\t%s\n' %(matricula,email[0],email[1])
+			a +=  '%s\t%s\t\n' %(matricula,email)
 		return a
 	
 	

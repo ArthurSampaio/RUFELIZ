@@ -25,7 +25,8 @@ def tela_principal ():
 	print '3.\tREMOVER USUÁRIO'
 	print '4.\tIMPRIMIR EMAILS'
 	print '5.\tENVIA EMAILS'
-	print '6.\tSAIR.'
+	print '6.\tESTATISTICAS'
+	print '7.\tSAIR.'
 	
 
 def main ():
@@ -48,9 +49,9 @@ def main ():
 	while True: 
 		clear()
 		tela_principal()
-		opcao = raw_input('OPÇÃO: ')
+		opcao = int(raw_input('OPÇÃO: '))
 				
-		if opcao == '1': 
+		if opcao == 1: 
 			print 'aaaa'
 			while True: 
 				print 'Para finalizar, digite "encerrar" no campo de matricula'
@@ -63,7 +64,8 @@ def main ():
 				else: 
 					print 'USUÁRIO JÁ CONSTA NOS NOSSOS REGISTROS.'
 
-		elif opcao == '2': 
+		elif opcao == 2: 
+			print adm
 			matricula = raw_input('MATRICULA: ')
 			email = raw_input('Novo Email: ')
 			alimentacao = raw_input('Nova Alimentação ')
@@ -72,7 +74,7 @@ def main ():
 			else: 
 				print 'Matricula não cadastrada.'
 			
-		elif opcao == '3': 
+		elif opcao == 3: 
 			print adm
 			print 'Insira a matricula do usuário que você quer remover do DB'
 			matricula = raw_input('MATRICULA: ')
@@ -81,12 +83,12 @@ def main ():
 			else: 
 				print 'Falha.Matricula não cadastrada'
 	
-		if opcao == '4':
+		elif opcao == 4:
 			print adm
 			raw_input('Tecle para continuar')
 		
 
-		elif opcao == '5':
+		elif opcao == 5:
 			print 'Por favor aguarde enquanto a conexão é estabelecida'
 			if envia.conexao(): print 'Conexão realizada com sucesso'
 			emails = adm.retorna_email()
@@ -96,12 +98,19 @@ def main ():
 			for end in emails:
 				i += 1
 				envia.send_mail(end, subject, mensagem)
-				print '%d email enviado' %i
+				print '%Email %i enviado' %i
 				
 
 			envia.close_connection()
+		
+		elif opcao == 6: 
+			veg, carn = adm.estatisticas()
+			print 'Há %i comensais cadastrados' %(veg+carn)
+			print 'Vegetarianos: %i\t %.1f' %(veg, (float(veg/(veg+carn))*100))
+			print 'Carnívoros: %i\t %1.f' %(carn, (float(carn/(veg+carn))*100))
+			raw_input('Clique para continuar')
 
-		elif opcao == '6': clear(); exit()
+		elif opcao == 7: clear(); exit()
 
 
 
