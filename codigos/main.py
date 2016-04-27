@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 from Admin import Administrador
 from SendEmail import SendEmail 
 
+
 def clear():  #PARA LIMPAR TELA DO TERMINAL 
     try:
         import os
@@ -47,9 +48,10 @@ def main ():
 	while True: 
 		clear()
 		tela_principal()
-		opcao = int(raw_input('OPÇÃO: '))
+		opcao = raw_input('OPÇÃO: ')
 				
-		if opcao == 1: 
+		if opcao == '1': 
+			print 'aaaa'
 			while True: 
 				print 'Para finalizar, digite "encerrar" no campo de matricula'
 				matricula = raw_input('MATRICULA: ')
@@ -61,7 +63,7 @@ def main ():
 				else: 
 					print 'USUÁRIO JÁ CONSTA NOS NOSSOS REGISTROS.'
 
-		elif opcao == 2: 
+		elif opcao == '2': 
 			matricula = raw_input('MATRICULA: ')
 			email = raw_input('Novo Email: ')
 			alimentacao = raw_input('Nova Alimentação ')
@@ -70,7 +72,8 @@ def main ():
 			else: 
 				print 'Matricula não cadastrada.'
 			
-		elif opcao == 3: 
+		elif opcao == '3': 
+			print adm
 			print 'Insira a matricula do usuário que você quer remover do DB'
 			matricula = raw_input('MATRICULA: ')
 			if adm.remove_usuario(matricula): 
@@ -78,24 +81,28 @@ def main ():
 			else: 
 				print 'Falha.Matricula não cadastrada'
 	
-		elif opcao == 4:
+		if opcao == '4':
 			print adm
+			raw_input('Tecle para continuar')
+		
 
-		elif opcao == 5:
+		elif opcao == '5':
 			print 'Por favor aguarde enquanto a conexão é estabelecida'
 			if envia.conexao(): print 'Conexão realizada com sucesso'
 			emails = adm.retorna_email()
 			mensagem = raw_input('Digite sua mensagem: ')
 			subject = raw_input('Digite o assunto da msg: ')
-			i = 0			
+			i = 0		# conta qnts emails foram enviados. 	
 			for end in emails:
+				i += 1
 				envia.send_mail(end, subject, mensagem)
 				print '%d email enviado' %i
-				clear()
+				
 
 			envia.close_connection()
 
-		elif opcao == 6: exit()
+		elif opcao == '6': clear(); exit()
+
 
 
 main ()			

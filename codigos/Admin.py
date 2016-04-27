@@ -37,16 +37,15 @@ class Administrador (object):
 			dados = pickle.loads(self.db_emails[matricula])
 			dados[0],dados[1] = novo_email, nova_alimentacao	
 			#após substituição, o tipo de dado será transformado em string e armazenado
-			self.db_emails[matricula] = pickle.dumps[dados]				
-			return True 
-	
+			self.db_emails[matricula] = pickle.dumps([dados])
+			return True 	
 		else: return False
 			
 
 	def remove_usuario (self, matricula): 
 		if matricula in self.db_emails: 
 			del self.db_emails[matricula]
-			return True
+			print 'removido com sucesso'
 		return False
 
 	def retorna_email(self):
@@ -58,23 +57,22 @@ class Administrador (object):
 
 	def estatisticas(self):
 		#retorna a quantidade de cadastrados, de vegetarianos e carnívoros
-		cadastrados = len(self.db_emails) 
-		for usuarios in range(len(self.db_emails)): 
+		veg, carn = 0,0
+		for usuarios in self.db_emails: 
 			dado = pickle.loads(self.db_emails[usuarios])
-			if dado[1] == vegetariano: vegetariano += 1
-			else: carnivoro += 1
-		return cadastrados, vegetariano, carnivoro
+			if dado[1] == 'vegetariano': veg += 1
+			else: carn += 1
+		return veg, carn
 
 	def __str__(self): 
-		#para imprimir quando for digitado print 'obj' 
+		a = ''
+		print 'Matricula\tEmail\t\tAlimentação'	
+		print '________________________________________________________________'
 		for matricula in self.db_emails: 
 			email = (pickle.loads(self.db_emails[matricula]))
-			print 'Email: %s' %email[0]
-
+			a +=  '%s\t%s\t%s\n' %(matricula,email[0],email[1])
+		return a
 	
 	
-
-# teste para a classe Admin
-
-
-
+	
+	
