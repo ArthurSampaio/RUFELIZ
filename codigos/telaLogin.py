@@ -8,7 +8,7 @@ from Tkinter import *
 class Login:
 	def __init__(self,toplevel):
 		#FRAMES
-		self.canvas = Canvas(toplevel, width = 500, height = 100, bd = 5).pack()
+		self.canvas = Canvas(toplevel, width = 500, height = 100, bd = 5, bg = 'darkblue').pack()
 		self.toplevel = toplevel
 		self.toplevel.title('RUFELIZ - Ligando o RU com a comunidade')
 		self.frame1=Frame(toplevel,padx = 10, pady = 15)
