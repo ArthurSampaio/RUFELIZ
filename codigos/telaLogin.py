@@ -26,8 +26,7 @@ class Login:
 		fonte1=('Arial','10','bold')
 		Label(self.frame2,text='Nome: ',
 		font=fonte1,width=8).pack(side=LEFT)
-		self.nome=Entry(self.frame2,width=50, 
-		font=fonte1)
+		self.nome=Entry(self.frame2,width=50, font=fonte1)
 		self.nome.focus_force() # Para o foco começar neste campo
 		self.nome.pack(side=LEFT)
 		Label(self.frame3,text='Senha: ',
