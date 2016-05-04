@@ -49,7 +49,7 @@ class AlteraUsuario(object):
 			Label(self.toplevel, text = 'Alimentação: ', font = self.font1, width = 14).grid(row = 7, column = 1)
 			self.alimentacao = StringVar(self.toplevel)
 			self.alimentacao.set(' ') #valor inicial do dropdown
-			escolhas = ['Vegetariano', 'Carnívoro']
+			escolhas = ['Vegetariano', 'Carnivoro']
 			opcao = OptionMenu(self.toplevel, self.alimentacao, *escolhas)#O * serve para que o dropdown divida os itens da lista respectiva lista apontada
 			opcao.grid(row = 7, column = 2)
 			#para utilizar a escolha dentro da opcao usar o metodo var.get()
@@ -58,9 +58,10 @@ class AlteraUsuario(object):
 			Label(self.toplevel, text = 'Usuário não possui cadastro', font = ('Arial', '8'), bg = 'red', fg = 'white').grid(row = 3, column = 2)
 		
 	def salvar (self): 
+		adm = Administrador(self.login, self.senha)
 	#A confirmação que foi alterado ou não será mostrado numa janela auxiliar. (Segue sua implementação)	
 		self.janela_aux = Toplevel(instancia)
-		if self.adm.altera_usuario(self.matricula.get(), self.email.get(), self.alimentacao.get()):
+		if adm.altera_usuario(self.matricula.get(), self.email.get(), self.alimentacao.get()):
 			Label(self.janela_aux, text = 'Alteração Concluída', width = 50, font = self.font1).grid()
 		else: 	
 			Label(self.janela_aux, text = 'Ocorreu um erro. Por favor, tente novamente', fg = 'red', width = 50, font = self.font1).grid()

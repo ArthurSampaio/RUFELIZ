@@ -39,10 +39,8 @@ class Administrador (object):
 	#altera email e alimentação do aluno 
 		if matricula in self.db_emails:  #se alterar retorna 1, se a matricula n estiver cadastrada retorna 0
 			#transforma a informação armazenada em forma de string no seu tipo original 
-			dados = pickle.loads(self.db_emails[matricula])
-			dados[0],dados[1] = novo_email, nova_alimentacao	
 			#após substituição, o tipo de dado será transformado em string e armazenado
-			self.db_emails[matricula] = pickle.dumps([dados])
+			self.db_emails[matricula] = pickle.dumps([novo_email, nova_alimentacao])
 			return True 	
 		else: return False
 			
