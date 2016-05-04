@@ -21,7 +21,7 @@ class Administrador (object):
 		else: return False
 			
 	def verifica_matricula(self, matricula):
-		if matricula not in self.db_emails:
+		if matricula in self.db_emails:
 			return True
 		return False		
 

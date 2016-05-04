@@ -40,9 +40,9 @@ class CadastraUsuario(object):
 		
 		#DEFININDO OS BOTÕES DE SALVAR E FECHAR
 		self.botao_salvar = Button(self.toplevel, font = self.font1, text = 'Salvar', bg='dodgerblue', command= self.salvar)
-		self.botao_salvar.grid(row = 5, column = 1, padx = 10, pady = 10)
+		self.botao_salvar.grid(row = 5, column = 0, columnspan = 2, padx = 10, pady = 10)
 		self.botao_fechar = Button(self.toplevel, font = self.font1, text = 'Fechar', bg = 'dodgerblue', command = self.fechar)
-		self.botao_fechar.grid(row = 5, column = 2)
+		self.botao_fechar.grid(row = 5, column = 25, columnspan = 2)
 	
 	def salvar(self):
 		adm = Administrador(self.login, self.senha)
