@@ -13,7 +13,7 @@ class Email(object):
 		#INICIALIZANDO O CANVAS E OS FRAMES
 		self.kanvas = Canvas(toplevel, width = 500, height = 100, bg = 'darkblue').pack()
 		self.toplevel = toplevel 
-		self.toplevel.title('RUFELIZ - ENVIO DE EMAILS')
+		self.toplevel.title('RUFELIZ - Envio de emails')
 		self.frame1 = Frame(toplevel, padx = 5, pady = 5).pack()
 		self.frame2 = Frame(toplevel, padx = 5, pady = 5).pack()
 		self.frame3 = Frame(toplevel, padx = 15, pady = 20).pack()

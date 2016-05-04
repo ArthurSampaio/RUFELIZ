@@ -48,7 +48,7 @@ class Administrador (object):
 	def remove_usuario (self, matricula): 
 		if matricula in self.db_emails: 
 			del self.db_emails[matricula]
-			print 'removido com sucesso'
+			return True
 		return False
 
 	def retorna_email(self):

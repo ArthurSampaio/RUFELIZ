@@ -2,7 +2,6 @@
 #TELA DE CADASTRAR NOVO COMENSAL
 
 from Admin import Administrador
-from SendEmail import SendEmail
 from Tkinter import *
 
 class CadastraUsuario(object):
@@ -10,7 +9,7 @@ class CadastraUsuario(object):
 		self.login = 'rufelizp1@gmail.com'
 		self.senha = 'projetoru'
 		#INICIALIZANDO KANVAS 
-		kanvas = Canvas(toplevel, width = 300, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 3)	
+		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 4)	
 		self.toplevel = toplevel
 		self.toplevel.title('RUFELIZ - Cadastro de novo comensal')
 		
@@ -49,8 +48,7 @@ class CadastraUsuario(object):
 		alimentacao = self.alimentacao.get()
 		email = self.email.get()
 		matricula = self.matricula.get()
-				
-		
+						
 		#Implementando uma caixa de diálogo para aparecer quando ocorrer a ação de salvar (tanto para True qnt para False)
 		self.janela_aux = Toplevel(instancia)
 		if adm.cadastra_usuario(matricula, email, alimentacao):
