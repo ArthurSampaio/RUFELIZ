@@ -16,10 +16,14 @@ class Administrador (object):
 		self.db_emails = anydbm.open('emails.db', 'c')	# DB PARA EMAIL CADASTRADOS
 		self.db_login = anydbm.open('login_cadastrado.db', 'c')
 
-	def verifica_login (self):
+	def verifica_login (self): #VERIFICA O LOGIN QND FOR PARA O ADMINISTRADOR ACESSAR - USADO NA TELA DE LOGIN - 
 		if self._login in self.db_login and self.db_login[self._login] == self._senha: return True
 		else: return False
 			
+	def verifica_matricula(self, matricula):
+		if matricula not in self.db_emails:
+			return True
+		return False		
 
 	def cadastra_usuario (self, matricula, email, alimentacao):
 	#cadastra um novo comensal(aluno) na lista de emails e recebe se é carnívoro ou vegetariano, retorna 1 caso 	seja cadastrado ou 0 caso já esteja na lista '''

@@ -29,12 +29,12 @@ class Email(object):
 		self.subject.focus_force()
 		self.subject.pack()
 		#Campo da mensagem 
-		Label(self.frame3, text = 'Mensagem: ', font = font1, width = 14).pack(side = LEFT)
-		self.mensagem = Text(self.frame3, height = 20, padx = 5, pady = 5)
+		Label(self.frame3, text = 'Mensagem: ', font = font1, width = 10).pack(side = LEFT)
+		self.mensagem = Text(self.frame3, height = 15, padx = 5, pady = 5)
 		self.mensagem.pack(side = LEFT)
 		#Botoẽs de enviar e fechar tela
-		self.enviar = Button(self.frame4, font = font1, text = 'Enviar',  bg='dodgerblue', command= self.enviar).pack(side = TOP)
-		self.fechar = Button(self.frame4, font = font1, text = 'Fechar',  bg='dodgerblue', command= self.fechar).pack(side = TOP)
+		self.enviar = Button(self.frame4, font = font1, text = 'Enviar',  bg='dodgerblue', command= self.enviar).pack(side = BOTTOM)
+		self.fechar = Button(self.frame4, font = font1, text = 'Fechar',  bg='dodgerblue', command= self.fechar).pack(side = BOTTOM)
 		#MENSAGEM
 		self.msg=Label(self.frame5,font=font1, height=3,text='AGUARDANDO...')
 		self.msg.pack()

@@ -26,9 +26,10 @@ class SendEmail (object):
 		mail = MIMEText(mensagem)
 		mail['To'] = destinatario
 		mail['Subject'] =  subject
-		self.gm.sendmail(self.login, destinatario, mail.as_string())
-		return True
+		if self.gm.sendmail(self.login, destinatario, mail.as_string()):
+			return True
 
+	def frescura (self): return True
 	def close_connection(self):
 		self.gm.close()
 	
