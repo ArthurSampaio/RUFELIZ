@@ -69,11 +69,12 @@ class Administrador (object):
 
 	def __str__(self): 
 		a = ''
-		print 'Matricula\tEmail\t\tAlimentação'	
-		print '________________________________________________________________'
+		a += 'Matricula\tEmail\tAlimentação\n'	
+		a += '______________________________________________________________'
+		a += '\n\n'
 		for matricula in self.db_emails: 
 			email = (pickle.loads(self.db_emails[matricula]))
-			a +=  '%s\t%s\t\n' %(matricula,email)
+			a +=  '%s\t%s\t%s\n' %(matricula,email[0],email[1])
 		return a
 	
 	
