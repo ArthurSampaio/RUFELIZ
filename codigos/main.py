@@ -113,10 +113,5 @@ def main ():
 		elif opcao == 7: clear(); exit()
 
 
-
-main ()			
-			
-	
-
 					 
 

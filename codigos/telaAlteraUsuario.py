@@ -80,18 +80,3 @@ class AlteraUsuario(object):
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			
-instancia=Tk()
-AlteraUsuario(instancia)
-instancia.mainloop()

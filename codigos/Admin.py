@@ -24,6 +24,9 @@ class Administrador (object):
 		if matricula in self.db_emails:
 			return True
 		return False		
+		
+	def login_senha(self): 
+		return self._login, self._senha	
 
 	def cadastra_usuario (self, matricula, email, alimentacao):
 	#cadastra um novo comensal(aluno) na lista de emails e recebe se é carnívoro ou vegetariano, retorna 1 caso 	seja cadastrado ou 0 caso já esteja na lista '''
@@ -57,6 +60,16 @@ class Administrador (object):
 			dados = pickle.loads(self.db_emails[key])
 			emails.append(dados[0])
 		return emails
+		
+	def retorna_valores_lista(self):
+		matriculas, emails, alimentacao = [], [], [] 
+		for matricula in self.db_emails: 
+			email_alimentacao = (pickle.loads(self.db_emails[matricula]))
+			matriculas.append(matricula)
+			emails.append(email_alimentacao[0])
+			alimentacao.append(email_alimentacao[1])
+		return matriculas, emails, alimentacao			
+				
 
 	def estatisticas(self):
 		#retorna a quantidade de cadastrados, de vegetarianos e carnívoros
@@ -73,8 +86,8 @@ class Administrador (object):
 		a += '______________________________________________________________'
 		a += '\n\n'
 		for matricula in self.db_emails: 
-			email = (pickle.loads(self.db_emails[matricula]))
-			a +=  '%s\t%s\t%s\n' %(matricula,email[0],email[1])
+			email_alimentacao = (pickle.loads(self.db_emails[matricula]))
+			a +=  '%s\t%s\t%s\n' %(matricula,email_alimentacao[0],email_alimentacao[1])
 		return a
 	
 	

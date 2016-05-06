@@ -69,9 +69,5 @@ class Email(object):
 				
 	def fechar (self): 
 		self.toplevel.destroy()
-		
 
-instancia=Tk()
-Email(instancia)
-instancia.mainloop()
 		

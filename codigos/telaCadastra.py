@@ -66,7 +66,4 @@ class CadastraUsuario(object):
 	def fechar(self):
 		self.toplevel.destroy()	
 		
-		
-instancia=Tk()
-CadastraUsuario(instancia)
-instancia.mainloop()
+

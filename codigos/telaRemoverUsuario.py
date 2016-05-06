@@ -48,7 +48,3 @@ class RemoveUsuario(object):
 			
 	def fechar(self):
 		self.toplevel.destroy()	
-		
-instancia=Tk()
-RemoveUsuario(instancia)
-instancia.mainloop()
