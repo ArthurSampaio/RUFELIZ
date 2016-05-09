@@ -6,7 +6,7 @@ import os,sys,sqlite3
 from tkFileDialog import *
 from Admin import Administrador
 
-class TabelaDados():
+class TabelaDados(object):
 	def __init__(self, root):
 		self.adm = Administrador('rufelizp1@gmail.com','projetoru')
 		self.master = root

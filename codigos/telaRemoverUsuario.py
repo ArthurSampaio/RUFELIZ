@@ -5,9 +5,9 @@ from Admin import Administrador
 from Tkinter import *
 
 class RemoveUsuario(object): 
-	def __init__(self, toplevel): 
-		self.login = 'rufelizp1@gmail.com'
-		self.senha = 'projetoru'
+	def __init__(self, toplevel, login, senha): 
+		self.login = login
+		self.senha = senha
 		#INICIALIZANDO KANVAS 
 		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 4)	
 		self.toplevel = toplevel
@@ -32,7 +32,7 @@ class RemoveUsuario(object):
 		
 	def remover(self): 
 		adm = Administrador (self.login, self.senha)
-		self.janela_aux = Toplevel(instancia)
+		self.janela_aux = Toplevel()
 		if adm.remove_usuario(self.matricula.get()): 
 			Label(self.janela_aux, text = 'Remoção realizada com sucesso', width = 50, font = self.font1).grid()
 		else: 

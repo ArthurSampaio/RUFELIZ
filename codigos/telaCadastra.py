@@ -5,9 +5,9 @@ from Admin import Administrador
 from Tkinter import *
 
 class CadastraUsuario(object):
-	def __init__(self, toplevel): 
-		self.login = 'rufelizp1@gmail.com'
-		self.senha = 'projetoru'
+	def __init__(self, toplevel, login, senha): 
+		self.login = login
+		self.senha = senha
 		#INICIALIZANDO KANVAS 
 		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 4)	
 		self.toplevel = toplevel
@@ -41,7 +41,7 @@ class CadastraUsuario(object):
 		self.botao_salvar = Button(self.toplevel, font = self.font1, text = 'Salvar', bg='dodgerblue', command= self.salvar)
 		self.botao_salvar.grid(row = 5, column = 0, columnspan = 2, padx = 10, pady = 10)
 		self.botao_fechar = Button(self.toplevel, font = self.font1, text = 'Fechar', bg = 'dodgerblue', command = self.fechar)
-		self.botao_fechar.grid(row = 5, column = 25, columnspan = 2)
+		self.botao_fechar.grid(row = 5, column = 2, columnspan = 2)
 	
 	def salvar(self):
 		adm = Administrador(self.login, self.senha)
@@ -50,7 +50,7 @@ class CadastraUsuario(object):
 		matricula = self.matricula.get()
 						
 		#Implementando uma caixa de diálogo para aparecer quando ocorrer a ação de salvar (tanto para True qnt para False)
-		self.janela_aux = Toplevel(instancia)
+		self.janela_aux = Toplevel(self.toplevel)
 		if adm.cadastra_usuario(matricula, email, alimentacao):
 			Label(self.janela_aux, text = 'Cadastro realizado com sucesso', width = 50, font = self.font1).grid()
 		else: 
@@ -65,5 +65,4 @@ class CadastraUsuario(object):
 			
 	def fechar(self):
 		self.toplevel.destroy()	
-		
 

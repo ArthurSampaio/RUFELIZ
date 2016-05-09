@@ -7,37 +7,33 @@ from Admin import Administrador
 from Tkinter import *
 
 class Email(object): 
-	def __init__(self, toplevel): 
-		self.login = 'rufelizp1@gmail.com'
-		self.senha = 'projetoru'
+	def __init__(self, toplevel, login, email): 
+		self.login = login
+		self.senha = email
 		#INICIALIZANDO O CANVAS E OS FRAMES
-		self.kanvas = Canvas(toplevel, width = 500, height = 100, bg = 'darkblue').pack()
+		self.kanvas = Canvas(toplevel, width = 500, height = 100, bg = 'darkblue').grid()
 		self.toplevel = toplevel 
 		self.toplevel.title('RUFELIZ - Envio de emails')
-		self.frame1 = Frame(toplevel, padx = 5, pady = 5).pack()
-		self.frame2 = Frame(toplevel, padx = 5, pady = 5).pack()
-		self.frame3 = Frame(toplevel, padx = 15, pady = 20).pack()
-		self.frame4 = Frame(toplevel, padx = 5, pady = 5).pack()
-		self.frame5 = Frame(toplevel, padx = 5, pady = 5).pack()
+		
 		
 		#MENSAGEM DE TELA 
-		Label(self.frame1, text = 'RU FELIZ - ENVIO DE EMAILS', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).pack()
+		Label(self.toplevel, text = 'RU FELIZ - ENVIO DE EMAILS', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid()
 		#Campo do assunto
 		font1 = ('Arial', '10', 'bold')
-		Label(self.frame2, text = 'Assunto: ', font = font1, width = 14).pack()
-		self.subject = Entry(self.frame2, width = 50, font = font1)
+		Label(self.toplevel, text = 'Assunto: ', font = font1, width = 14).grid()
+		self.subject = Entry(self.toplevel, width = 50, font = font1)
 		self.subject.focus_force()
-		self.subject.pack()
+		self.subject.grid()
 		#Campo da mensagem 
-		Label(self.frame3, text = 'Mensagem: ', font = font1, width = 10).pack(side = LEFT)
-		self.mensagem = Text(self.frame3, height = 15, padx = 5, pady = 5)
-		self.mensagem.pack(side = LEFT)
+		Label(self.toplevel, text = 'Mensagem: ', font = font1, width = 10).grid()
+		self.mensagem = Text(self.toplevel, height = 15, padx = 5, pady = 5)
+		self.mensagem.grid()
 		#Botoẽs de enviar e fechar tela
-		self.enviar = Button(self.frame4, font = font1, text = 'Enviar',  bg='dodgerblue', command= self.enviar).pack(side = BOTTOM)
-		self.fechar = Button(self.frame4, font = font1, text = 'Fechar',  bg='dodgerblue', command= self.fechar).pack(side = BOTTOM)
+		self.enviar = Button(self.toplevel, font = font1, text = 'Enviar',  bg='dodgerblue', command= self.enviar).grid()
+		self.fechar = Button(self.toplevel, font = font1, text = 'Fechar',  bg='dodgerblue', command= self.fechar).grid(row = 89, column = 0  )
 		#MENSAGEM
-		self.msg=Label(self.frame5,font=font1, height=3,text='AGUARDANDO...')
-		self.msg.pack()
+		self.msg=Label(self.toplevel,font=font1, height=3,text='AGUARDANDO...')
+		self.msg.grid()
 		
 	def enviar (self): 
 		mensagem = self.mensagem.get("1.0", END).encode("utf-8")
@@ -71,3 +67,4 @@ class Email(object):
 		self.toplevel.destroy()
 
 		
+

@@ -5,9 +5,9 @@ from Admin import Administrador
 from Tkinter import *
 
 class AlteraUsuario(object):
-	def __init__(self, toplevel): 
-		self.login = 'rufelizp1@gmail.com'
-		self.senha = 'projetoru'
+	def __init__(self, toplevel, login, senha): 
+		self.login = login
+		self.senha = senha
 		#instanciando um objeto Adminstrador
 		self.adm = Administrador (self.login, self.senha)
 		#INICIALIZANDO KANVAS 
@@ -60,7 +60,7 @@ class AlteraUsuario(object):
 	def salvar (self): 
 		adm = Administrador(self.login, self.senha)
 	#A confirmação que foi alterado ou não será mostrado numa janela auxiliar. (Segue sua implementação)	
-		self.janela_aux = Toplevel(instancia)
+		self.janela_aux = Toplevel(self.toplevel)
 		if adm.altera_usuario(self.matricula.get(), self.email.get(), self.alimentacao.get()):
 			Label(self.janela_aux, text = 'Alteração Concluída', width = 50, font = self.font1).grid()
 		else: 	
