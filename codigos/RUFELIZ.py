@@ -19,18 +19,18 @@ class RUFELIZ(object):
 		
 		self.toplevel = toplevel 
 		self.toplevel.title('RUFELIZ - Com você para melhorar o atendimento')
+		self.toplevel
 		#IMAGEM PRINCIPAL
 		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_marca.gif')	
 		self.label = Label(image = self.photo)
 		self.label.image = self.photo
-		self.label.grid(row = 0, column = 0, columnspan = 3)
+		self.label.grid()
 		
 		
 		#TEXTO PRINCIPAL
 		Label(self.toplevel, text = '', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3)
 		#fonte padrão 
 		self.font1 = ('Arial', '10', 'bold')	
-
 	
 		#DEFININDO BOTÕES 
 		botao_cadastra = Button(self.toplevel, font = self.font1, text = 'Cadastrar Usuário', width = 50, bg='dodgerblue', command = self.cadastra).grid(columnspan = 3)
@@ -46,13 +46,13 @@ class RUFELIZ(object):
 		CadastraUsuario(self.tela_cadastra, self.login, self.senha)
 		self.tela_cadastra.grab_set()
 		self.tela_cadastra.mainloop()
-		self.tela_cadastra.grab_set()
+		
 		
 	def altera(self): 
 		self.tela_altera = Toplevel(self.toplevel)
 		AlteraUsuario(self.tela_altera, self.login, self.senha)
-		self.tela_cadastra.mainloop()
 		self.tela_cadastra.grab_set()	
+		self.tela_altera.mainloop()
 		
 	def remove(self): 
 		self.tela_remove = Toplevel(self.toplevel)
@@ -61,10 +61,11 @@ class RUFELIZ(object):
 		self.tela_cadastra.grab_set()
 	
 	def email(self): 
-		self.tela_email = Tk()
+		self.tela_email = Toplevel(self.toplevel)
 		Email(self.tela_email, self.login, self.senha)
+		self.tela_email.grab_set()
 		self.tela_email.mainloop()
-		self.tela_cadastra.grab_set()		
+			
 	
 	def visualiza(self): 
 		self.tela_visualiza = Tk()

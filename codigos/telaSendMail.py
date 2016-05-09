@@ -11,13 +11,15 @@ class Email(object):
 		self.login = login
 		self.senha = email
 		#INICIALIZANDO O CANVAS E OS FRAMES
-		self.kanvas = Canvas(toplevel, width = 500, height = 100, bg = 'darkblue').grid()
 		self.toplevel = toplevel 
 		self.toplevel.title('RUFELIZ - Envio de emails')
 		
+		#IMAGEM PRINCIPAL
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_send.gif')	
+		self.label = Label(self.toplevel, image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 0)	
 		
-		#MENSAGEM DE TELA 
-		Label(self.toplevel, text = 'RU FELIZ - ENVIO DE EMAILS', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid()
 		#Campo do assunto
 		font1 = ('Arial', '10', 'bold')
 		Label(self.toplevel, text = 'Assunto: ', font = font1, width = 14).grid()
@@ -65,6 +67,4 @@ class Email(object):
 				
 	def fechar (self): 
 		self.toplevel.destroy()
-
-		
 
