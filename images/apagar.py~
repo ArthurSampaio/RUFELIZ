@@ -1,0 +1,11 @@
+from Tkinter import *
+
+root = Tk()
+
+
+
+photo = PhotoImage(file = './ufcg.gif')
+label = Label(image = photo)
+label.image = photo
+label.grid()
+root.mainloop()
