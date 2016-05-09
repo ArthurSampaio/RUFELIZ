@@ -8,7 +8,6 @@ from Tkinter import *
 class Login:
 	def __init__(self,toplevel): 
 		#FRAMES
-		self.canvas = Canvas(toplevel, width = 500, height = 100, bd = 5, bg = 'darkblue').grid()
 		self.toplevel = toplevel
 		self.toplevel.title('RUFELIZ - Ligando o RU com a comunidade')
 		self.frame1=Frame(toplevel,padx = 10, pady = 15)
@@ -20,12 +19,18 @@ class Login:
 		self.frame4=Frame(toplevel,pady=10)
 		self.frame4.grid()
 		self.frame5 = Frame(toplevel, pady = 10).grid()
+		
+		#FOTOS 
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ufcg.gif')	
+		self.label = Label(image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 0)	
+		
 		#MENSAGENS E CORPO DO NOME E SENHA		
 		Label(self.frame1,text='RU FELIZ', fg='darkblue',
 		font=('Arial','14','bold'), height=3).grid()
 		fonte1=('Arial','10','bold')
-		Label(self.frame2,text='Nome: ',
-		font=fonte1,width=8).grid()
+		Label(self.frame2,text='Nome: ',font=fonte1,width=8).grid()
 		self.nome=Entry(self.frame2,width=50, font=fonte1)
 		self.nome.focus_force() # Para o foco começar neste campo
 		self.nome.grid()

@@ -19,20 +19,25 @@ class RUFELIZ(object):
 		
 		self.toplevel = toplevel 
 		self.toplevel.title('RUFELIZ - Com você para melhorar o atendimento')
-		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid()
-
+		#IMAGEM PRINCIPAL
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_marca.gif')	
+		self.label = Label(image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 0, columnspan = 3)
+		
+		
 		#TEXTO PRINCIPAL
-		Label(self.toplevel, text = 'RUFELIZ', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid()
+		Label(self.toplevel, text = '', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3)
 		#fonte padrão 
 		self.font1 = ('Arial', '10', 'bold')	
 
 	
 		#DEFININDO BOTÕES 
-		botao_cadastra = Button(self.toplevel, font = self.font1, text = 'Cadastrar Usuário', width = 30, bg='dodgerblue', command = self.cadastra).grid()
-		botao_altera = Button(self.toplevel, font = self.font1, text = 'Altera Usuário', width = 30, bg='dodgerblue', command = self.altera).grid()
-		botao_remove = Button(self.toplevel, font = self.font1, text = 'Remove Usuário', width = 30, bg='dodgerblue', command = self.remove).grid()	
-		botao_email = Button(self.toplevel, font = self.font1, text = 'Envia Email', width = 30, bg='dodgerblue', command = self.email).grid()
-		botao_visualiza = Button(self.toplevel, font = self.font1, text = 'Visualizar dados', width = 30, bg='dodgerblue', command = self.visualiza).grid()
+		botao_cadastra = Button(self.toplevel, font = self.font1, text = 'Cadastrar Usuário', width = 50, bg='dodgerblue', command = self.cadastra).grid(columnspan = 3)
+		botao_altera = Button(self.toplevel, font = self.font1, text = 'Altera Usuário', width = 50, bg='dodgerblue', command = self.altera).grid(columnspan = 3)
+		botao_remove = Button(self.toplevel, font = self.font1, text = 'Remove Usuário', width = 50, bg='dodgerblue', command = self.remove).grid(columnspan = 3)	
+		botao_email = Button(self.toplevel, font = self.font1, text = 'Envia Email', width = 50, bg='dodgerblue', command = self.email).grid(columnspan = 3)
+		botao_visualiza = Button(self.toplevel, font = self.font1, text = 'Visualizar dados', width = 50, bg='dodgerblue', command = self.visualiza).grid(columnspan = 3)
 	
 	#Linkagens com as outras classes 
 	
