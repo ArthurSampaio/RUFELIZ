@@ -10,32 +10,35 @@ class AlteraUsuario(object):
 		self.senha = senha
 		#instanciando um objeto Adminstrador
 		self.adm = Administrador (self.login, self.senha)
-		#INICIALIZANDO KANVAS 
-		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 4)	
+		
 		self.toplevel = toplevel
 		self.toplevel.title('RUFELIZ - Alterando Cadastro')
 		
-		#TEXTO PRINCIPAL
-		
-		Label(self.toplevel, text = 'ALTERAÇÃO DE CADASTRO', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid(row = 1, columnspan = 4)
+		#fonte utilizada
 		self.font1 = ('Arial', '10', 'bold')
+		
+		#IMAGEM PRINCIPAL
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_altera.gif')	
+		self.label = Label(self.toplevel, image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 0, columnspan = 3)
 		
 		#PARA MATRICULA 
 		frameM = Frame(self.toplevel, padx = 5, pady = 5).grid(row = 2)
-		Label(self.toplevel, text = 'Matricula: ', font = self.font1, width = 14).grid(row = 2, column = 1)
+		Label(self.toplevel, text = 'Matricula: ', font = self.font1, width = 14).grid(row = 2, column = 0)
 		self.matricula = Entry(self.toplevel, width = 25,font = self.font1)
 		self.matricula.focus_force()
-		self.matricula.grid(row = 2, column = 2)
+		self.matricula.grid(row = 2, column = 1)
 		#botão para verificar que a matricula ja consta no bd
 		self.botao_verificar = Button(self.toplevel, font = self.font1, text = 'Verificar', command = self.verifica_matricula)
-		self.botao_verificar.grid(row = 2, column = 3)
+		self.botao_verificar.grid(row = 2, column = 2)
 		
 		
 		#DEFININDO OS BOTÕES DE SALVAR E FECHAR
 		self.botao_salvar = Button(self.toplevel, font = self.font1, text = 'Salvar', bg='dodgerblue', command = self.salvar)
 		self.botao_salvar.grid(row = 9, column = 0, columnspan = 2, padx = 10, pady = 10)
 		self.botao_fechar = Button(self.toplevel, font = self.font1, text = 'Fechar', bg = 'dodgerblue', command = self.fechar)
-		self.botao_fechar.grid(row = 9, column = 2, columnspan = 2)
+		self.botao_fechar.grid(row = 9, column = 1, columnspan = 2)
 
 	def verifica_matricula(self): 
 		if self.adm.verifica_matricula(self.matricula.get()) and len(self.matricula.get()) >= 1:
@@ -78,5 +81,8 @@ class AlteraUsuario(object):
 	def fechar(self):
 		self.toplevel.destroy()
 		
-		
+#instancia=Tk()
+
+#AlteraUsuario(instancia, 'uhu', 'ijki')
+#instancia.mainloop()
 		

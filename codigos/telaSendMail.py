@@ -10,15 +10,17 @@ class Email(object):
 	def __init__(self, toplevel, login, email): 
 		self.login = login
 		self.senha = email
-		#INICIALIZANDO O CANVAS E OS FRAMES
 		self.toplevel = toplevel 
 		self.toplevel.title('RUFELIZ - Envio de emails')
-		
+		#fonte utilizada
+		self.font1 = ('Arial', '10', 'bold')
+	
+			
 		#IMAGEM PRINCIPAL
 		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_send.gif')	
 		self.label = Label(self.toplevel, image = self.photo)
 		self.label.image = self.photo
-		self.label.grid(row = 0, column = 0)	
+		self.label.grid(row = 0, column = 0, columnspan = 2)	
 		
 		#Campo do assunto
 		font1 = ('Arial', '10', 'bold')
@@ -42,7 +44,7 @@ class Email(object):
 		mensagem += '\nCordialmente,\nRUFELIZ - Ligando o Restaurante Universitário com Você'
 		mensagem += '\nRUFELIZ é um projeto de Arthur Sampaio para a disciplina de Programação I da UFCG.'
 		assunto = self.subject.get()	
-
+		#realiza conexão com o servidor SMTP
 		email = SendEmail(self.login,self.senha)
 		self.msg['text'] = 'REALIZANDO CONEXÃO'
 		
@@ -61,9 +63,19 @@ class Email(object):
 				enviou = True
 			else: enviou = False
 		
-		if enviou: 
-			self.msg ['text'] = 'EMAILS ENVIADOS COM SUCESSO'
-			self.msg['fg'] = 'blue'
+		
+		 
+		#Implementando uma caixa de diálogo para aparecer quando ocorrer a ação de enviar (nesta caso, quando for True)
+		self.janela_aux = Toplevel(self.toplevel)
+		if enviou:
+			Label(self.janela_aux, text = 'Emails enviados com sucesso', width = 50, font = self.font1).grid()
+		else: 
+			Label(self.janela_aux, text = 'Ocorreu um Erro. Tente novamente', width = 50, font = self.font1).grid()
+		botao = Button(self.janela_aux,text = 'Ok', command = self.fechar_dialogo).grid()
+		#indica que a janela criada é filha da janela mãe "toplevel"0
+		self.janela_aux.transient(self.toplevel)
+		#Mantém os eventos restritos a janela filha enquanto ela estiver aberta
+		self.janela_aux.grab_set()
 				
 	def fechar (self): 
 		self.toplevel.destroy()

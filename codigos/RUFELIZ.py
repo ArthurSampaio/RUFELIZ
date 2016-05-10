@@ -51,9 +51,9 @@ class RUFELIZ(object):
 	def altera(self): 
 		self.tela_altera = Toplevel(self.toplevel)
 		AlteraUsuario(self.tela_altera, self.login, self.senha)
-		self.tela_cadastra.grab_set()	
 		self.tela_altera.mainloop()
-		
+		self.tela_cadastra.grab_set()	
+	
 	def remove(self): 
 		self.tela_remove = Toplevel(self.toplevel)
 		RemoveUsuario(self.tela_remove, self.login, self.senha)

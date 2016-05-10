@@ -8,15 +8,19 @@ class CadastraUsuario(object):
 	def __init__(self, toplevel, login, senha): 
 		self.login = login
 		self.senha = senha
-		#INICIALIZANDO KANVAS 
-		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 4)	
+		
+		#fonte utilizada
+		self.font1 = ('Arial', '10', 'bold')	
+		
+	
 		self.toplevel = toplevel
 		self.toplevel.title('RUFELIZ - Cadastro de novo comensal')
+		#IMAGEM PRINCIPAL
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_cadastra.gif')	
+		self.label = Label(self.toplevel, image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 1, columnspan = 2)
 		
-		#TEXTO PRINCIPAL
-		
-		Label(self.toplevel, text = 'CADASTRO DE USUÁRIO', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid(row = 1, columnspan = 3)
-		self.font1 = ('Arial', '10', 'bold')
 		
 		#PARA MATRICULA 
 		frameM = Frame(self.toplevel, padx = 5, pady = 5).grid(row = 2)
@@ -32,7 +36,7 @@ class CadastraUsuario(object):
 		Label(self.toplevel, text = 'Alimentação: ', font = self.font1, width = 14).grid(row = 4, column = 1)
 		self.alimentacao = StringVar(toplevel)
 		self.alimentacao.set(' ') #valor inicial do dropdown
-		escolhas = ['Vegetariano', 'Carnívoro']
+		escolhas = ['Vegetariano', 'Carnivoro']
 		opcao = OptionMenu(self.toplevel, self.alimentacao, *escolhas)#O * serve para que o dropdown divida os itens da lista respectiva lista apontada
 		opcao.grid(row = 4, column = 2)
 		#para utilizar a escolha dentro da opcao usar o metodo var.get()
@@ -45,7 +49,7 @@ class CadastraUsuario(object):
 	
 	def salvar(self):
 		adm = Administrador(self.login, self.senha)
-		alimentacao = self.alimentacao.get()
+		alimentacao = self.alimentacao.get().encode("utf-8")
 		email = self.email.get()
 		matricula = self.matricula.get()
 						
@@ -65,4 +69,8 @@ class CadastraUsuario(object):
 			
 	def fechar(self):
 		self.toplevel.destroy()	
+'''
+instancia=Tk()
 
+CadastraUsuario(instancia, 'uhu', 'ijki')
+instancia.mainloop()'''
