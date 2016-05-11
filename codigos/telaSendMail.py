@@ -5,6 +5,10 @@ import anydbm
 from SendEmail import SendEmail
 from Admin import Administrador
 from Tkinter import *
+import tkMessageBox
+import os,sys,sqlite3
+from tkFileDialog import *
+
 
 class Email(object): 
 	def __init__(self, toplevel, login, email): 
@@ -39,6 +43,18 @@ class Email(object):
 		self.msg=Label(self.toplevel,font=font1, height=3,text='AGUARDANDO...')
 		self.msg.grid()
 		
+		#menu
+		menubar = Menu(toplevel)
+		filemenu = Menu(menubar,tearoff=0)
+		filemenu.add_command(label = "Novo")	
+		filemenu.add_command(label="Salvar Como", command = self.salvar_como)
+		filemenu.add_command(label ="Abrir Arquivo")
+		filemenu.add_command(label="Sair", command = self.fechar)
+		menubar.add_cascade(label="Arquivo",menu=filemenu)
+		toplevel.config(menu=menubar)
+		
+		
+		
 	def enviar (self): 
 		mensagem = self.mensagem.get("1.0", END).encode("utf-8")
 		mensagem += '\nCordialmente,\nRUFELIZ - Ligando o Restaurante Universitário com Você'
@@ -63,8 +79,7 @@ class Email(object):
 				enviou = True
 			else: enviou = False
 		
-		
-		 
+				 
 		#Implementando uma caixa de diálogo para aparecer quando ocorrer a ação de enviar (nesta caso, quando for True)
 		self.janela_aux = Toplevel(self.toplevel)
 		if enviou:
@@ -79,4 +94,24 @@ class Email(object):
 				
 	def fechar (self): 
 		self.toplevel.destroy()
+		
+	
+	def salvar_como(self): 
+		filename = str(asksaveasfilename(title="Save as File",defaultextension=".txt",filetypes=[('text file','.txt')]))
+		if len(filename) > 0:
+			f = open(filename,"w")
+			text = self.mensagem.get("1.0",END).encode("utf-8")
+			f.write(text)
+			f.close()
+			self.file_name = filename
+			self.master.title(filename[filename.rfind("/")+1:] + ": RUFELIZ")
+			self.changed = False
+        
 
+
+
+
+
+instancia=Tk()
+Email(instancia, 'yuhuh', 'UHUH')
+instancia.mainloop()

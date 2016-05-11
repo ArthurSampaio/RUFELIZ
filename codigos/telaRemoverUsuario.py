@@ -8,15 +8,16 @@ class RemoveUsuario(object):
 	def __init__(self, toplevel, login, senha): 
 		self.login = login
 		self.senha = senha
-		#INICIALIZANDO KANVAS 
-		kanvas = Canvas(toplevel, width = 450, height = 100, bg = 'darkblue').grid(row = 0, columnspan = 4)	
+		#fonte padrão 
+		self.font1 = ('Arial', '10', 'bold')	
+		#iniciando o toplevel
 		self.toplevel = toplevel
 		self.toplevel.title('RUFELIZ - Remover usário')
-		
-		#TEXTO PRINCIPAL
-		
-		Label(self.toplevel, text = 'REMOÇÃO DE USUÁRIO', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid(row = 1, columnspan = 4)
-		self.font1 = ('Arial', '10', 'bold')
+		#IMAGEM PRINCIPAL
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_remove.gif')	
+		self.label = Label(self.toplevel, image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 1, columnspan = 2)
 		
 		#PARA MATRICULA 
 		frameM = Frame(self.toplevel, padx = 5, pady = 5).grid(row = 2)
@@ -48,3 +49,4 @@ class RemoveUsuario(object):
 			
 	def fechar(self):
 		self.toplevel.destroy()	
+
