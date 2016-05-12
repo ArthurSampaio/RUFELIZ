@@ -111,7 +111,3 @@ class Email(object):
 
 
 
-
-instancia=Tk()
-Email(instancia, 'yuhuh', 'UHUH')
-instancia.mainloop()

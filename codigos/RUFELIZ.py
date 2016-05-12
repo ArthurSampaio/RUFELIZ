@@ -47,11 +47,11 @@ class RUFELIZ(object):
 		self.font1 = ('Arial', '10', 'bold')	
 	
 		#DEFININDO BOTÕES 
-		botao_cadastra = Button(self.toplevel, font = self.font1, text = 'Cadastrar Usuário', width = 50, bg='dodgerblue', command = self.cadastra).grid(columnspan = 3)
-		botao_altera = Button(self.toplevel, font = self.font1, text = 'Altera Usuário', width = 50, bg='dodgerblue', command = self.altera).grid(columnspan = 3)
-		botao_remove = Button(self.toplevel, font = self.font1, text = 'Remove Usuário', width = 50, bg='dodgerblue', command = self.remove).grid(columnspan = 3)	
-		botao_email = Button(self.toplevel, font = self.font1, text = 'Envia Email', width = 50, bg='dodgerblue', command = self.email).grid(columnspan = 3)
-		botao_visualiza = Button(self.toplevel, font = self.font1, text = 'Visualizar dados', width = 50, bg='dodgerblue', command = self.visualiza).grid(columnspan = 3)
+		botao_cadastra = Button(self.toplevel, font = self.font1, text = 'Cadastrar Usuário', width = 50, bg='dodgerblue', fg = 'white', command = self.cadastra).grid(columnspan = 3)
+		botao_altera = Button(self.toplevel, font = self.font1, text = 'Altera Usuário', width = 50, bg='dodgerblue',fg = 'white',  command = self.altera).grid(columnspan = 3)
+		botao_remove = Button(self.toplevel, font = self.font1, text = 'Remove Usuário', width = 50, bg='dodgerblue', fg = 'white', command = self.remove).grid(columnspan = 3)	
+		botao_email = Button(self.toplevel, font = self.font1, text = 'Envia Email', width = 50, bg='dodgerblue', fg = 'white', command = self.email).grid(columnspan = 3)
+		botao_visualiza = Button(self.toplevel, font = self.font1, text = 'Visualizar dados', width = 50, bg='dodgerblue', fg = 'white', command = self.visualiza).grid(columnspan = 3)
 	
 		
 	
@@ -67,14 +67,14 @@ class RUFELIZ(object):
 	def altera(self): 
 		self.tela_altera = Toplevel(self.toplevel)
 		AlteraUsuario(self.tela_altera, self.login, self.senha)
-		self.tela_email.grab_set()
-		self.tela_email.mainloop()	
+		self.tela_altera.grab_set()
+		self.tela_altera.mainloop()	
 	
 	def remove(self): 
 		self.tela_remove = Toplevel(self.toplevel)
 		RemoveUsuario(self.tela_remove, self.login, self.senha)
-		self.tela_email.grab_set()
-		self.tela_email.mainloop()
+		self.tela_remove.grab_set()
+		self.tela_remove.mainloop()
 	
 	def email(self): 
 		self.tela_email = Toplevel(self.toplevel)
@@ -84,17 +84,17 @@ class RUFELIZ(object):
 			
 	
 	def visualiza(self): 
-		self.tela_visualiza = Tk()
-		TabelaDados(self.tela_visualiza)
-		self.tela_email.grab_set()
-		self.tela_email.mainloop()	
+		self.tela_visualiza = Toplevel(self.toplevel)
+		TabelaDados(self.tela_visualiza, self.login, self.senha)
+		self.tela_visualiza.grab_set()
+		self.tela_visualiza.mainloop()	
 		
 	def sair(self):
 		self.toplevel.destroy()
 		
 	def sobre(self): 
+		#janela sobre o projeto
 		self.janela_aux = Toplevel()
-		 
 		Label(self.janela_aux, text = 'Sobre o RUFELIZ', width = 50, font = self.font1).grid()
 		sobre = StringVar()
 		sobre = '''RUFELIZ, é um sistema que tem por objetivo estreitar os laços entre o Restaurante Universitário da UFCG e o corpo discente que é usuário de seus serviços. 

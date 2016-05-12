@@ -7,21 +7,27 @@ from tkFileDialog import *
 from Admin import Administrador
 
 class TabelaDados(object):
-	def __init__(self, root):
-		self.adm = Administrador('rufelizp1@gmail.com','projetoru')
-		self.master = root
-		self.master.title('Lista de dados')
-		kanvas = Canvas(self.master, width = 450, height = 100, bg = 'darkblue').grid(row = 0, column = 1, columns = 3,sticky = N+E+S+W )	
-		Label(self.master, text = 'DADOS CADASTRADOS', fg = 'darkblue', font = ('Arial', '22', 'bold'), height = 3).grid(row = 1, column = 1, columnspan = 3, sticky = N+E+S+W)
+	def __init__(self, root, login, senha):
+		self.login = login
+		self.senha = senha
+		self.adm = Administrador(self.login, self.senha)
+		self.toplevel = root
+		self.toplevel.title('Lista de dados')
+		#IMAGEM PRINCIPAL
+		self.photo = PhotoImage(file = '/home/petcomputacao/Documentos/sampaio/RUFELIZ/images/ru_dados.gif')	
+		self.label = Label(self.toplevel, image = self.photo)
+		self.label.image = self.photo
+		self.label.grid(row = 0, column = 0, columnspan = 3)
+		#recebendo os dados da classe Administrador
 		self.matricula, self.email, self.alimentacao = self.adm.retorna_valores_lista()
 		COLUNAS = 3 #são tres colunas de valores
-		Label(self.master, text = 'MATRICULA', font = ('Arial','11','bold')).grid(row = 2, column = 1, padx = 10, pady = 10, sticky = N+E+S+W)
-		Label(self.master, text = 'EMAIL',  font = ('Arial','11','bold')).grid(row = 2, column = 2,padx = 10, pady = 10, sticky = N+E+S+W )
-		Label(self.master, text = 'ALIMENTAÇÃO',  font = ('Arial','11','bold')).grid(row = 2, column = 3, padx = 10, pady = 10, sticky = N+E+S+W)
+		Label(self.toplevel, text = 'MATRICULA', font = ('Arial','11','bold')).grid(row = 2, column = 0, sticky = N+E+S+W)
+		Label(self.toplevel, text = 'EMAIL',  font = ('Arial','11','bold')).grid(row = 2, column = 1, sticky = N+E+S+W )
+		Label(self.toplevel, text = 'ALIMENTAÇÃO',  font = ('Arial','11','bold')).grid(row = 2, column = 2, sticky = N+E+S+W)
 		for i in range(len(self.matricula)):
-			label = Label(self.master, text = '%s' %str(self.matricula[i])).grid(row = i+4, column = 1, sticky = N+E+S+W)
-			label = Label(self.master, text = '%s' %str(self.email[i])).grid(row = i+4, column = 2,  sticky = N+E+S+W)
-			label = Label(self.master, text = '%s' %str(self.alimentacao[i])).grid(row = i+4, column = 3,  sticky = N+E+S+W)
+			label = Label(self.toplevel, text = '%s' %str(self.matricula[i])).grid(row = i+4, column = 0, sticky = N+E+S+W)
+			label = Label(self.toplevel, text = '%s' %str(self.email[i])).grid(row = i+4, column = 1,  sticky = N+E+S+W)
+			label = Label(self.toplevel, text = '%s' %str(self.alimentacao[i])).grid(row = i+4, column = 2,  sticky = N+E+S+W)
 			
 			
 
