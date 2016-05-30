@@ -44,17 +44,17 @@ class AlteraUsuario(object):
 		if self.adm.verifica_matricula(self.matricula.get()) and len(self.matricula.get()) >= 1:
 			Label(self.toplevel, text = 'Usuário cadastrado', font = ('Arial', '8'), bg = 'green', fg = 'white').grid(row = 3, column = 2)
 			#PARA EMAIL 
-			Label(self.toplevel, text = 'Email: ', font = self.font1, width = 14).grid(row = 5, column = 1)
+			Label(self.toplevel, text = 'Email: ', font = self.font1, width = 14).grid(row = 5, column = 0)
 			self.email = Entry(self.toplevel, width = 25, font = self.font1)
-			self.email.grid(row = 5, column = 2)
+			self.email.grid(row = 5, column = 1)
 			
 			#PARA A CAIXA DROPDOWN DA ALIMENTAÇÃO
-			Label(self.toplevel, text = 'Alimentação: ', font = self.font1, width = 14).grid(row = 7, column = 1)
+			Label(self.toplevel, text = 'Alimentação: ', font = self.font1, width = 14).grid(row = 7, column = 0)
 			self.alimentacao = StringVar(self.toplevel)
 			self.alimentacao.set(' ') #valor inicial do dropdown
 			escolhas = ['Vegetariano', 'Carnivoro']
 			opcao = OptionMenu(self.toplevel, self.alimentacao, *escolhas)#O * serve para que o dropdown divida os itens da lista respectiva lista apontada
-			opcao.grid(row = 7, column = 2)
+			opcao.grid(row = 7, column = 1)
 			#para utilizar a escolha dentro da opcao usar o metodo var.get()
 			
 		else: 
@@ -81,8 +81,8 @@ class AlteraUsuario(object):
 	def fechar(self):
 		self.toplevel.destroy()
 		
-#instancia=Tk()
+instancia=Tk()
 
-#AlteraUsuario(instancia, 'uhu', 'ijki')
-#instancia.mainloop()
+AlteraUsuario(instancia, 'uhu', 'ijki')
+instancia.mainloop()
 		
